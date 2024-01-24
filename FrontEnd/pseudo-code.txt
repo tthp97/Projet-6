@@ -1,0 +1,17 @@
+VARIABLES 
+
+valeur de formulaire email = email
+valeur de formulaire password = password
+
+FONCTIONS
+
+fonction comparaison des données <- 
+   SI valeur de formulaire email=email et valeur de formulaire password = password 
+    ALORS rediréction vers la page index avec le compte connecté 
+   SINON
+   afficher un message d'erreur
+
+
+
+
+fonction récuperation des données <- 
