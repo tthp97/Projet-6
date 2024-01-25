@@ -18,52 +18,54 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <script type="module" src="config.js"></script>
   </head>
-  <body class="i-body">
+  <body class="i-body" id="i-body">
     <div class="bandeau-edition d-none" aria-hidden="true">
       <i class="fa-regular fa-pen-to-square"></i>
       <h3>Mode édition</h3>
     </div>
-    <div class="modale d-none" aria-hidden="true">
-      <i class="fa-solid fa-arrow-left d-none"></i>
-      <i class="fa-solid fa-x close-modale"></i>
-      <section class="choix-projet-modale">
-        <h3 class="modale-title">Galerie photo</h3>
-        <article class="insertion-projet-modale"></article>
-        <span class="modale-underline"></span>
-        <button class="modal-button">Ajouter une photo</button>
-      </section>
-      <section class="form-envoi-projet d-none">
-        <h3 class="modale-title">Ajout de photo</h3>
-        <form id="ajout-projet" class="ajout-projet">
-          <div class="ajout-image">
-            <i id="image-container" class="fa-regular fa-image"></i>
-            <label for="image" class="btn-image">
-              <span>+ Ajouter photo</span>
-              <input type="file" name="image" id="image" />
-              <h6>jpg, png : 4mo max</h6></label
-            >
-          </div>
-          <label for="titre-image">
-            Titre
-            <input
-              type="text"
-              name="titre-image"
-              id="titre-image"
-              required
-            /> </label
-          ><label for="categorie-image">
-            Catégorie
-            <select name="categorie-image" id="categorie-image">
-              <option value="1">Objets</option>
-              <option value="2">Appartements</option>
-              <option value="3">Hotels et Resaturants</option>
-            </select>
-          </label>
-          <div class="message-erreur-ajout"></div>
+    <div id="modale-container" class="d-none">
+      <div class="modale d-none" aria-hidden="true">
+        <i class="fa-solid fa-arrow-left d-none"></i>
+        <i class="fa-solid fa-x close-modale"></i>
+        <section class="choix-projet-modale">
+          <h3 class="modale-title">Galerie photo</h3>
+          <article class="insertion-projet-modale"></article>
           <span class="modale-underline"></span>
-          <button type="submit" id="submit">Valider</button>
-        </form>
-      </section>
+          <button class="modal-button">Ajouter une photo</button>
+        </section>
+        <section class="form-envoi-projet d-none">
+          <h3 class="modale-title">Ajout de photo</h3>
+          <form id="ajout-projet" class="ajout-projet">
+            <div class="ajout-image">
+              <i id="image-container" class="fa-regular fa-image"></i>
+              <label for="image" class="btn-image">
+                <span>+ Ajouter photo</span>
+                <input type="file" name="image" id="image" required />
+                <h6>jpg, png : 4mo max</h6></label
+              >
+            </div>
+            <label for="titre-image">
+              Titre
+              <input
+                type="text"
+                name="titre-image"
+                id="titre-image"
+                required
+              /> </label
+            ><label for="categorie-image">
+              Catégorie
+              <select name="categorie-image" id="categorie-image">
+                <option value="1">Objets</option>
+                <option value="2">Appartements</option>
+                <option value="3">Hotels et Resaturants</option>
+              </select>
+            </label>
+            <div class="message-erreur-ajout"></div>
+            <span class="modale-underline"></span>
+            <button id="btn-envoi">Valider</button>
+          </form>
+        </section>
+      </div>
     </div>
     <header class="i-header">
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
@@ -115,7 +117,7 @@
             Hotels et Restaurants
           </button>
         </div>
-        <div class="gallery" id="#gallery"></div>
+        <div class="gallery" id="gallery"></div>
       </section>
       <section id="contact">
         <h2>Contact</h2>
