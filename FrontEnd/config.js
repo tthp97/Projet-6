@@ -20,8 +20,11 @@ async function gestionProjet() {
   const reponse1 = await fetch(`http://localhost:5678/api/works`);
   const projet1 = await reponse1.json();
   sectionGalerie.innerHTML = "";
-  for (let i = 0; i < projet1.length; i++) {
-    const travaux = projet1[i];
+  creationProjet(projet1);
+}
+function creationProjet(projet) {
+  for (let i = 0; i < projet.length; i++) {
+    const travaux = projet[i];
     //creation de l'emplacement des projets
     const figureProjet = document.createElement("figure");
     figureProjet.setAttribute("class", `${travaux.category.name}`);
@@ -35,7 +38,6 @@ async function gestionProjet() {
     figureProjet.appendChild(titreProjet);
   }
 }
-
 //assignation des différents boutons
 const bt = document.querySelector(".bt");
 const bo = document.querySelector(".bo");
@@ -57,40 +59,43 @@ bt.addEventListener("click", () => {
 });
 
 //filtre pour afficher la categorie objet
-bo.addEventListener("click", function () {
+bo.addEventListener("click", async function () {
   addClickedClass();
   bo.classList.add("button-clicked");
-  const objetProjet = projet.filter(
+  const fetchWorks = await fetch(`http://localhost:5678/api/works`);
+  const response = await fetchWorks.json();
+  const objetProjet = response.filter(
     (projet) => projet.category.name == "Objets"
   );
   document.querySelector(".gallery").innerHTML = "";
-  gestionProjet(objetProjet);
+  creationProjet(objetProjet);
 });
 
 //filtre pour afficher la catégorie appartement
-ba.addEventListener("click", function () {
+ba.addEventListener("click", async function () {
   addClickedClass();
+  const fetchWorks = await fetch(`http://localhost:5678/api/works`);
+  const response = await fetchWorks.json();
   ba.classList.add("button-clicked");
-  const appartementsProjet = projet.filter(
+  const appartementsProjet = response.filter(
     (projet) => projet.category.name == "Appartements"
   );
   document.querySelector(".gallery").innerHTML = "";
-  gestionProjet(appartementsProjet);
+  creationProjet(appartementsProjet);
 });
 
 //filtre pour afficher la catégorie hotel et restaurant
-bhr.addEventListener("click", function () {
+bhr.addEventListener("click", async function () {
   addClickedClass();
+  const fetchWorks = await fetch(`http://localhost:5678/api/works`);
+  const response = await fetchWorks.json();
   bhr.classList.add("button-clicked");
-  const hrProjet = projet.filter(
+  const hrProjet = response.filter(
     (projet) => projet.category.name == "Hotels & restaurants"
   );
   document.querySelector(".gallery").innerHTML = "";
-  gestionProjet(hrProjet);
+  creationProjet(hrProjet);
 });
-//assignation des différents boutons
-
-//filtre pour afficher tous les projets
 
 //Generation des projets de la modale
 async function genererProjetModale() {
@@ -254,6 +259,7 @@ formulaire.addEventListener("click", (event) => {
     formTitle.value = "";
     formCategory.value = "";
     const imgAjout = document.getElementById("no-opacity");
+    console.log(reponse.status);
     if (reponse.status === 201) {
       genererProjetModale();
       gestionProjet();
