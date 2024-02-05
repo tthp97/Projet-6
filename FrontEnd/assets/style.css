@@ -129,6 +129,7 @@ table {
 }
 /** end reset css**/
 body {
+  max-width: 1140px;
   margin: auto;
   font-family: "Work Sans";
   font-size: 14px;
@@ -401,7 +402,16 @@ form button {
   flex-wrap: wrap;
   align-items: center;
 }
-
+.projet-connect {
+  position: absolute;
+  gap: 10px;
+  top: 0.45%;
+  left: 60%;
+  display: flex;
+}
+#portfolio {
+  position: relative;
+}
 /* Lorsque l'utilisateur connecté, clique sur l'icone de modification */
 
 .modale {
@@ -416,9 +426,14 @@ form button {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 4;
+}
+#modale-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
   z-index: 3;
 }
-
 .d-none {
   display: none;
 }
@@ -529,11 +544,17 @@ form button {
 }
 
 input[type="file"] {
-  display: none;
+  opacity: 0;
+  height: 1px;
+  position: absolute;
+  transform: translate(50%, -50%);
 }
 .fa-regular.fa-image {
   font-size: 76px;
   color: #cbd6dc;
+}
+.btn-image {
+  position: relative;
 }
 .btn-image span {
   width: 173px;

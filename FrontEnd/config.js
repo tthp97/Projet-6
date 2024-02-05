@@ -7,7 +7,7 @@ console.log(userId);
 //Variables création modale
 let modal = document.querySelector(".modale");
 let body = document.querySelector(".i-body");
-let iconeOpenModale = document.querySelector(".fa-pen-to-square");
+let iconeOpenModale = document.querySelector(".projet-connect");
 let iconeCloseModale = document.querySelector(".fa-x");
 let filterBar = document.querySelector(".filter-bar");
 const redirectionButtonAjoutPhoto = document.querySelector(".modal-button");
@@ -154,6 +154,8 @@ function affichageEditBar() {
   const editBar = document.querySelector(".bandeau-edition");
   editBar.classList.remove("d-none");
   editBar.removeAttribute("aria-hidden");
+  const projetConnect = document.querySelector(".projet-connect");
+  projetConnect.classList.remove("d-none");
   //gestion du click sur le mode edition pour ouvrir la modale
   iconeOpenModale.addEventListener("click", openModale);
 }
@@ -258,7 +260,6 @@ formulaire.addEventListener("click", (event) => {
     formImage.value = "";
     formTitle.value = "";
     formCategory.value = "";
-    const imgAjout = document.getElementById("no-opacity");
     console.log(reponse.status);
     if (reponse.status === 201) {
       genererProjetModale();
