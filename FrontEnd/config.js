@@ -156,6 +156,8 @@ function affichageEditBar() {
   editBar.removeAttribute("aria-hidden");
   const projetConnect = document.querySelector(".projet-connect");
   projetConnect.classList.remove("d-none");
+  const navBar = document.querySelector(".filter-bar");
+  navBar.classList.add("d-none");
   //gestion du click sur le mode edition pour ouvrir la modale
   iconeOpenModale.addEventListener("click", openModale);
 }
